@@ -11,12 +11,13 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 -  Signal correlation between the `SongAndSignal` and `SongTrue` is calculated as a function of lag time to identify the temporal offset.
 -  A sliding correction window (in the time domain) will scan over the song to match the amplitude of `SongTrue` to `SongAndSignal` before subtraction, since this will vary over the course of the recording. Thus the pre-subtraction signal attenuation factor (A*) is empirically determined as a function of time.
 -  In real situations, the attenuation will not be consistent across all frequencies (trivial example: music that was accidentally recorded while being played from a phone speaker will not contain the bass frequencies that are present in `SongTrue`). Consequently, it may be helpful to pass a sliding frequency window within the sliding time window. In this case, the pre-subtraction signal attenuation (A*) is a calculated as a function of time and frequency.
+-  The `SongTrue` is waveform is inverted, attenuated by A*, and added to `SongAndSignal`.
 
 ## Data product:
 ### Consumer/individual interface
 Users arrive at a webpage with 4 feature:
 -  Select file to upload
--  Enter payment information (if new user)
+-  Enter payment information (if new/unregistered user)
 -  Select output format
 -  Press "GO" to begin
 
@@ -34,3 +35,7 @@ The file `TracksSpectral.png` shows two recordings:
 -  **Bottom:** The pure recording of the song (`SongTrue`)
 
 ![TracksSpectral](TracksSpectral_marked.png)
+
+## Notes
+
+As a separate approach from the A* method described above, it might be easier to simply apply blind source separation methods (SSA??) to `SongAndSignal`, then only recombine sources that don't show strong signal correlation with `SongTrue`.
