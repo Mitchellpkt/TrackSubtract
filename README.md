@@ -16,7 +16,7 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 ### Consumer/individual interface
 Users arrive at a webpage with 4 feature:
 -  Select file to upload
--  Enter payment information
+-  Enter payment information (if new user)
 -  Select output format
 -  Press "GO" to begin
 
