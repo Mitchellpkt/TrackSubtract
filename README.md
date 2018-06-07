@@ -64,3 +64,5 @@ The amplitudes below are raw, **not** normalized yet. In this particular case, t
 -  To test whether or not a removal has been successful is as simple as checking the output against the music identification service again. If it can recognize the song from the output, another treatment is necessary to scrub its remnants.
 
 -  Thanks to the Insight Remote 2018 cohort and Amir Assadi for helping me bounce these ideas around. :- )
+
+-  Unless the source and microphone are perfectly stationary with respect to each other, it will be necessary to identify the coarse temporal offset over the whole song (e.g. the song started 2 min, 21 seconds into the recording), then calculate a more precise offset within each window. Why? Imagine that partway through a recording, the distance between the microphone and source increases: the phases will not match throghout the recording (and there will be a brief Doppler red shift during the movement).
