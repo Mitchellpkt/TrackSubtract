@@ -6,6 +6,16 @@ Automatic removal of copyrighted music from audio streams.
 ## Goal
 Most major video platforms scan content for copyrighted audio. When infringing audio is detected in the background of a file, it is either deleted or muted. Either option results in fewer files, less revenue, and frustrated users. TrackSubtract provides a one-click product for removing unwanted copyrighted music from any audio file.
 
+## Data product:
+### Consumer/individual interface
+Users arrive at a webpage with 4 feature:
+-  Select file to upload
+-  Enter payment information (if new/unregistered user)
+-  Select output format
+-  Press "GO" to begin
+
+### High-volume customer API
+High-volume users (e.g. platforms for video sharing, etc) can access a pay-per-second API for removing music from audio tracks en masse
 
 ## Algorithm
 A user submits an audiofile labeled `SongAndSignal` that contains both the desired audio and a undesirable background song.
@@ -22,17 +32,6 @@ Only taking into account the temporal offset, this can be conceptualized as: `So
 Taking into account (by sliding windows) that the attenuation is a function of both time and frequency: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
 
 Given w_t and w_f as the width of the temporal and frequency window, perhaps we are looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over the window `[(t-w_t)<t<(t+w_t), (f-w_f)<f<(f+w_f)]`
-
-## Data product:
-### Consumer/individual interface
-Users arrive at a webpage with 4 feature:
--  Select file to upload
--  Enter payment information (if new/unregistered user)
--  Select output format
--  Press "GO" to begin
-
-### High-volume customer API
-High-volume users (e.g. platforms for video sharing, etc) can access a pay-per-second API for removing music from audio tracks en masse
 
 ## Data
 The `SongTrue` file contains a recording of the song "Hey" from the BenSound.com royalty-free audio website.
