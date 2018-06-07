@@ -15,7 +15,7 @@ Users arrive at a webpage with 4 feature:
 -  Press "GO" to begin
 
 ### High-volume customer API
-High-volume users (e.g. platforms for video sharing, etc) can access a pay-per-second API for removing music from audio tracks en masse
+High-volume users (e.g. platforms for video sharing, etc) can access a pay-per-audio-second API for removing music from audio tracks en masse
 
 ## Algorithm
 A user submits an audiofile labeled `SongAndSignal` that contains both the desired audio and a undesirable background song.
