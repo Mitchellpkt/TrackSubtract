@@ -18,17 +18,9 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 
 ## Quick Eqns
 
-Considering only the attenuation as a function of time:
+Let t = time, and f = frequency. Considering only the temporal offset: `SongAndSignal(t) = Signal(t) + *A(t)*\*Song(t+temporalOffset)`, thus, `Signal(t) = SignalAndSong(t) - *A(t)*\*Song(t+temporalOffset)`
 
-SongAndSignal(t) = Signal(t) + *A(t)*\*Song(t+temporalOffset)
-
-thus:
-
-Signal(t) = SignalAndSong(t) - *A(t)*\*Song(t+temporalOffset)
-
-For the sliding window in both time and frequency domain, the last equation becomes:
-
-Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)
+For the sliding window in both time and frequency domain, the last equation becomes: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
 
 
 ## Data product:
