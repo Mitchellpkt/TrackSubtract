@@ -30,12 +30,18 @@ The `SongTrue` file contains a recording of the song "Hey" from the BenSound.com
 The `SongAndSignal` file contains a recording of me talking, while "Hey" plays in the background.
 
 ## Preliminary results:
-The file `TracksSpectral.png` shows two recordings:
+The below figures each show a visual representation the two files described above:
 -  **Top:** The recording of my voice while Hey plays in the background (`SongAndSignal`).
 -  **Bottom:** The pure recording of the song (`SongTrue`)
 
+`TracksWaveform_marked.png` shows both files represented as waveform time series:
+![TracksWaveform](TracksWaveform_marked.png)
+
+`TracksSectral_marked.png` shows the spectral representation:
 ![TracksSpectral](TracksSpectral_marked.png)
+
+Looking through the spectral lens, the task at hand can be viewed as subtraction of surfaces in 2-dimensional {time, frequency} space. From this perspective, the A* attenuation factor can be thought of as the scaling factor for mapping between the surfaces, empirically based on each point's neighborhood (whose size is defined by the width of the time & frequency windows).
 
 ## Notes
 
-As a separate approach from the A* method described above, it might be easier to simply apply blind source separation methods (SSA??) to `SongAndSignal`, then only recombine sources that don't show strong signal correlation with `SongTrue`.
+As a separate approach from the A* method described above, it might be easier to simply apply blind source separation methods (perhaps singular spectrum analysis / SSA) to `SongAndSignal`, then only recombine sources that don't show strong signal correlation with `SongTrue`.
