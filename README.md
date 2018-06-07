@@ -36,7 +36,7 @@ The below figures each show a visual representation the two files described abov
 -  **Top:** The recording of my voice while Hey plays in the background (`SongAndSignal`).
 -  **Bottom:** The pure recording of the song (`SongTrue`)
 
-The data are **not** normalized. In this particular case, the music signal in the `SongAndSignal` is quieter than `SongTrue`, so the latter would need to be attenuated to match (in other cases, it may need to be amplified).
+The amplitudes below are raw, **not** normalized yet. In this particular case, the music signal in the `SongAndSignal` is quieter than `SongTrue`, so the latter would need to be attenuated to match (in other cases, it may need to be amplified). Same model, just A* > 1 versus A* < 1.
 
 `TracksWaveform_marked.png` shows both files represented as waveform time series:
 ![TracksWaveform](TracksWaveform_marked.png)
