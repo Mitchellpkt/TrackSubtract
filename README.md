@@ -21,6 +21,8 @@ Only taking into account the temporal offset, this can be conceptualized as: `So
 
 Taking into account (by sliding windows) that the attenuation is a function of both time and frequency: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
 
+Given w_t and w_f as the width of the temporal and frequency window, perhaps we are looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over the window '[(t-w_t)<t<(t+w_t), (f-w_f)<f<(f+w_f)]'
+
 ## Data product:
 ### Consumer/individual interface
 Users arrive at a webpage with 4 feature:
@@ -55,8 +57,10 @@ The amplitudes below are raw, **not** normalized yet. In this particular case, t
 
 -  As a separate approach from the method described above, it might be easier to simply apply blind source separation methods (perhaps singular spectrum analysis / SSA) to `SongAndSignal`, then only recombine sources that don't show strong signal correlation with `SongTrue`.
 
--  To test whether or not a removal has been successful is as simple as checking the output against the music identification service again. :- ) If it can recognize the song from the output, another treatment is necessary.
-
 -  So far, I have been working with mono-channels recordings. It appears that if I had two microphones, I could use independent component analysis (ICA) to separate sources, which would be extremely powerful... The DUET blind source Separation method can separate any number of sources using only two mics. I wonder if recording `SongAndSignal` with a stereo mic would be sufficient to open this toolbox, though I don't think I want to impose that constraint.
 
 -  Principal component analysis (PCA) might be able to complete the task without the multi-mic requirement of ICA.
+
+-  To test whether or not a removal has been successful is as simple as checking the output against the music identification service again. If it can recognize the song from the output, another treatment is necessary to scrub its remnants.
+
+-  Thanks to the Insight Remote 2018 cohort and Amir Assadi for helping me bounce ideas around. :- )
