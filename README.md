@@ -44,7 +44,7 @@ The below figures each show a visual representation the two files described abov
 -  **Top:** The recording of my voice while Hey plays in the background (`SongAndSignal`).
 -  **Bottom:** The pure recording of the song (`SongTrue`)
 
-The amplitudes below are raw, **not** normalized yet. In this particular case, the music signal in the `SongAndSignal` is quieter than `SongTrue`, so the latter would need to be attenuated to match (in other cases, it may need to be amplified). Same algorithm, just instances with A* > 1 versus A* < 1.
+The amplitudes below are raw, **not** normalized yet. In this particular case, the music signal in the `SongAndSignal` is quieter than `SongTrue`, so the latter would need to be attenuated to match. The opposite case may be true in other situations, perhaps within the same audio file. There is no need to treat these as separate cases; whether to amplify or attenuate is reflected in whether A(t,f) is greater or less than unity.
 
 `TracksWaveform_marked.png` shows both files represented as waveform time series:
 ![TracksWaveform](TracksWaveform_marked.png)
@@ -63,4 +63,4 @@ The amplitudes below are raw, **not** normalized yet. In this particular case, t
 
 -  To test whether or not a removal has been successful is as simple as checking the output against the music identification service again. If it can recognize the song from the output, another treatment is necessary to scrub its remnants.
 
--  Thanks to the Insight Remote 2018 cohort and Amir Assadi for helping me bounce ideas around. :- )
+-  Thanks to the Insight Remote 2018 cohort and Amir Assadi for helping me bounce these ideas around. :- )
