@@ -19,7 +19,7 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 ## Quick Eqns
 Only taking into account the temporal offset, this can be conceptualized as: `SongAndSignal(t) = Signal(t) + A*Song(t+temporalOffset)`, thus, `Signal(t) = SignalAndSong(t) - A*Song(t+temporalOffset)`
 
-Taking into account the sliding window in both time and frequency domain, the last equation becomes: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
+Taking into account (by sliding windows) that the attenuation is a function of both time and frequency: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
 
 ## Data product:
 ### Consumer/individual interface
