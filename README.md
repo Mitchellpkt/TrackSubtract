@@ -17,11 +17,9 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 -  The `SongTrue` is waveform is inverted, scaled by *A*, and added to `SongAndSignal`.
 
 ## Quick Eqns
+Only taking into account the temporal offset, this can be conceptualized as: `SongAndSignal(t) = Signal(t) + A*Song(t+temporalOffset)`, thus, `Signal(t) = SignalAndSong(t) - A*Song(t+temporalOffset)`
 
-Let t = time, and f = frequency. Considering only the temporal offset: `SongAndSignal(t) = Signal(t) + *A(t)*\*Song(t+temporalOffset)`, thus, `Signal(t) = SignalAndSong(t) - *A(t)*\*Song(t+temporalOffset)`
-
-For the sliding window in both time and frequency domain, the last equation becomes: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
-
+Taking into account the sliding window in both time and frequency domain, the last equation becomes: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
 
 ## Data product:
 ### Consumer/individual interface
