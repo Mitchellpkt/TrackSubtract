@@ -1,5 +1,6 @@
 # TrackSubtract
 Automatic removal of copyrighted music from audio streams.
+2018.06.06
 
 ## Goal
 Most major video platforms scan content for copyrighted audio. When infringing audio is detected in the background of a file, it is either deleted or muted. Either option results in fewer files, less revenue, and frustrated users. TrackSubtract provides a one-click product for removing unwanted copyrighted music from any audio file.
