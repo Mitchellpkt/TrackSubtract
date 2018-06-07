@@ -1,7 +1,7 @@
 # TrackSubtract
 Automatic removal of copyrighted music from audio streams.
 
-2018.06.06
+2018.06.06 MPKT
 
 ## Goal
 Most major video platforms scan content for copyrighted audio. When infringing audio is detected in the background of a file, it is either deleted or muted. Either option results in fewer files, less revenue, and frustrated users. TrackSubtract provides a one-click product for removing unwanted copyrighted music from any audio file.
@@ -13,7 +13,7 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 -  Signal correlation between the `SongAndSignal` and `SongTrue` is calculated as a function of lag time to identify the temporal offset.
 -  A sliding correction window (in the time domain) will scan over the song to match the amplitude of `SongTrue` to `SongAndSignal` before subtraction, since this will vary over the course of the recording. Thus the pre-subtraction signal attenuation factor (A*) is empirically determined as a function of time.
 -  In real situations, the attenuation will not be consistent across all frequencies (trivial example: music that was accidentally recorded while being played from a phone speaker will not contain the bass frequencies that are present in `SongTrue`). Consequently, it may be helpful to pass a sliding frequency window within the sliding time window. In this case, the pre-subtraction signal attenuation (A*) is a calculated as a function of time and frequency.
--  The `SongTrue` is waveform is inverted, attenuated by A*, and added to `SongAndSignal`.
+-  The `SongTrue` is waveform is inverted, scaled by A*, and added to `SongAndSignal`.
 
 ## Data product:
 ### Consumer/individual interface
