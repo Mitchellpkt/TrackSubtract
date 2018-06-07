@@ -21,7 +21,7 @@ Only taking into account the temporal offset, this can be conceptualized as: `So
 
 Taking into account (by sliding windows) that the attenuation is a function of both time and frequency: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
 
-Given w_t and w_f as the width of the temporal and frequency window, perhaps we are looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over the window '[(t-w_t)<t<(t+w_t), (f-w_f)<f<(f+w_f)]'
+Given w_t and w_f as the width of the temporal and frequency window, perhaps we are looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over the window `[(t-w_t)<t<(t+w_t), (f-w_f)<f<(f+w_f)]`
 
 ## Data product:
 ### Consumer/individual interface
