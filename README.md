@@ -31,8 +31,6 @@ Only taking into account the temporal offset, this can be conceptualized as: `So
 
 Taking into account (by sliding windows) that the attenuation is a function of both time and frequency: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
 
-Given w_t and w_f as the width of the temporal and frequency window, perhaps we are looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over the window `[(t-w_t)<t<(t+w_t), (f-w_f)<f<(f+w_f)]`
-
 ## Data
 The `SongTrue` file contains a recording of the song "Hey" from the BenSound.com royalty-free audio website.
 
@@ -52,6 +50,9 @@ The amplitudes below are raw, **not** normalized yet. In this particular case, t
 ![TracksSpectral](TracksSpectral_marked.png)
 
 ## Misc Notes
+
+-  We are potentially looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over a given window.
+
 -  Looking through the spectral lens, the task at hand can be viewed as subtraction of surfaces in 2-dimensional {time, frequency} space. From this perspective, the A(t,f) attenuation factor can be thought of as the scaling factor for mapping between the surfaces, empirically based on each point's neighborhood (whose size is defined by the width of the time & frequency windows). This is a more visually-intuitive representation for `Signal(t,f) = SignalAndSong(t,f) - A(t,f)*Song(t+temporalOffset,f)`.
 
 -  As a separate approach from the method described above, it might be easier to simply apply blind source separation methods (perhaps singular spectrum analysis / SSA) to `SongAndSignal`, then only recombine sources that don't show strong signal correlation with `SongTrue`.
