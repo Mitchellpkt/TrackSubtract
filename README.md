@@ -51,7 +51,7 @@ The amplitudes below are raw, **not** normalized yet. In this particular case, t
 
 ## Misc Notes
 
--  We are potentially looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over a given window.
+-  What does it mean to scale to best match? We are potentially looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over a given window.
 
 -  Looking through the spectral lens, the task at hand can be viewed as subtraction of surfaces in 2-dimensional {time, frequency} space. From this perspective, the A(t,f) attenuation factor can be thought of as the scaling factor for mapping between the surfaces, empirically based on each point's neighborhood (whose size is defined by the width of the time & frequency windows). This is a more visually-intuitive representation for `Signal(t,f) = SignalAndSong(t,f) - A(t,f)*Song(t+temporalOffset,f)`.
 
