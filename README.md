@@ -37,6 +37,11 @@ The `SongTrue` file contains a recording of the song "Hey" from the BenSound.com
 The `SongAndSignal` file contains a recording of me talking, while "Hey" plays in the background.
 
 ## Preliminary results:
+
+The temporal offset between `SongTrue` and `SongAndSignal` is easily determined by checking lag correlation. The maximum in correlation shows the offset, and nearby local maxima show multiples of the beat.
+
+![temporal_offset.png](temporal_offset.png)
+
 The below figures each show a visual representation the two files described above
 -  **Top:** The recording of my voice while Hey plays in the background (`SongAndSignal`).
 -  **Bottom:** The pure recording of the song (`SongTrue`)
