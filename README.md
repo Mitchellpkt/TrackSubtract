@@ -59,7 +59,11 @@ One way to handle this might be warping the song's spectrogram to better match t
 
 ![freq_attenuation_ratio_Hz.png](freq_attenuation_ratio_Hz.png)
 
-Possible interim approaches:
+The results of applying this correction factor are shown below, warping the undesired song to match the profile of the mixed recording. (top = raw, bottom = warped)
+
+![warp_image.png](warp_image.png)
+
+Possible other approaches:
 -  Warp down by attenuating each frequency prior to any time windowing
 -  Temporarily pass the song through a high-pass filter ~ 1 kHz to leave the more apples-to-apples midrange signals for testing.
 -  Calculate A(t) constant across freqencies based on the midranges only. 
