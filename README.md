@@ -65,7 +65,7 @@ The results of applying this correction factor are shown below, warping the unde
 
 This produces excellent matching in the 1 kHz - 5 kHz range that contains the desired signel we wish to extract. The temporal matching and frequency warping appear to cleanly align the two signals. 
 
-![Matched_time_amplitude.png](Matched_time_amplitude.png)
+![Matched_time_amplitude_2.png](Matched_time_amplitude_2.png)
 
 Possible other approaches:
 -  Warp down by attenuating each frequency prior to any time windowing
