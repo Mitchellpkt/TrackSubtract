@@ -67,6 +67,10 @@ This produces excellent matching in the 1 kHz - 5 kHz range that contains the de
 
 ![Matched_time_amplitude_2.png](Matched_time_amplitude_2.png)
 
+The aligned and warped spectrogram is effectively scaled for removal from the mixed signal. The figures below show the result of cleaning the song out of the recording of my introduction. 
+
+![CleanedResult.png](CleanedResult.png)
+
 ## Misc Notes
 
 -  What does it mean to scale to best match? We are potentially looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over a given window.
