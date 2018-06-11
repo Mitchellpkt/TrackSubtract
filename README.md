@@ -67,11 +67,6 @@ This produces excellent matching in the 1 kHz - 5 kHz range that contains the de
 
 ![Matched_time_amplitude_2.png](Matched_time_amplitude_2.png)
 
-Possible other approaches:
--  Warp down by attenuating each frequency prior to any time windowing
--  Temporarily pass the song through a high-pass filter ~ 1 kHz to leave the more apples-to-apples midrange signals for testing.
--  Calculate A(t) constant across freqencies based on the midranges only. 
-
 ## Misc Notes
 
 -  What does it mean to scale to best match? We are potentially looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over a given window.
