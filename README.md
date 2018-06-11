@@ -55,10 +55,14 @@ The below figure shows the approach for calculating the attenuation factor. The 
 
 The mixed recording clearly contains an attenuated signal from the song in the 1 kHz - 5 kHz midrange frequencies. However, the strong bass frequencies (< 1kHz) in the undesired song true signal were not transferred into the recording (likely due to the low quality of the mic). Thus frequency windowing appears to be necessary as well.
 
+One way to handle this might be warping the song's spectrogram to better match the mixed signal's spectrogram at each frequency. The below figure shows the warping ratio at each frequency, attenuating the bass. The two odd spikes are due to frequencies favored by the cheap mic's static.
+
+![freq_attenuation_ratio_Hz.png](freq_attenuation_ratio_Hz.png)
+
 Possible interim approaches:
+-  Warp down by attenuating each frequency prior to any time windowing
 -  Temporarily pass the song through a high-pass filter ~ 1 kHz to leave the more apples-to-apples midrange signals for testing.
 -  Calculate A(t) constant across freqencies based on the midranges only. 
--  Initially window across frequency instead of time?
 
 ## Misc Notes
 
