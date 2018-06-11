@@ -63,6 +63,10 @@ The results of applying this correction factor are shown below, warping the unde
 
 ![warp_image.png](warp_image.png)
 
+This produces excellent matching in the 1 kHz - 5 kHz range that contains the desired signel we wish to extract. The temporal matching and frequency warping appear to cleanly align the two signals. 
+
+![Matched_time_amplitude.png](Matched_time_amplitude.png)
+
 Possible other approaches:
 -  Warp down by attenuating each frequency prior to any time windowing
 -  Temporarily pass the song through a high-pass filter ~ 1 kHz to leave the more apples-to-apples midrange signals for testing.
