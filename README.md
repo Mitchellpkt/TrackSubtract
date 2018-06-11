@@ -49,6 +49,17 @@ The amplitudes below are raw, **not** normalized yet. In this particular case, t
 `TracksSectral_marked.png` shows the spectral representation:
 ![TracksSpectral](TracksSpectral_marked.png)
 
+The below figure shows the approach for calculating the attenuation factor. The spectrograms on the right show a 500 ms slice of the aligned recordings. The left side shows the frequency decomposition at the left edge (e.g. t=0) of the respective spectrograms.
+
+![slice_500_ms.png](slice_500_ms.png)
+
+The mixed recording clearly contains an attenuated signal from the song in the 1 kHz - 5 kHz midrange frequencies. However, the strong bass frequencies (< 1kHz) in the undesired song true signal were not transferred into the recording (likely due to the low quality of the mic). Thus frequency windowing appears to be necessary as well.
+
+Possible interim approaches:
+-  Temporarily pass the song through a high-pass filter ~ 1 kHz to leave the more apples-to-apples midrange signals for testing.
+-  Calculate A(t) constant across freqencies based on the midranges only. 
+-  Initially window across frequency instead of time?
+
 ## Misc Notes
 
 -  What does it mean to scale to best match? We are potentially looking for the value of A(t,f) that minimizes Kullback–Leibler divergence over a given window.
