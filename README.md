@@ -22,25 +22,25 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 -  A music identification service (such as the open-source EchoPrint) identifies the song track in the background
 -  A file containing labeled `SongTrue` is obtained, containing a clean version.
 -  Signal correlation between the `SongAndSignal` and `SongTrue` is calculated as a function of lag time to identify the temporal offset.
--  A sliding correction window (in the time domain) will scan over the song to match the amplitude of `SongTrue` to `SongAndSignal` before subtraction, since this will vary over the course of the recording. Thus the pre-subtraction signal attenuation factor (*A*) is empirically determined as a function of time.
--  In real situations, the attenuation will not be consistent across all frequencies (trivial example: music that was accidentally recorded while being played from a phone speaker will not contain the bass frequencies that are present in `SongTrue`). Consequently, it may be helpful to pass a sliding frequency window within the sliding time window. In this case, the pre-subtraction signal attenuation (*A*) is a calculated as a function of time and frequency.
--  The `SongTrue` is waveform is inverted, scaled by *A*, and added to `SongAndSignal`.
-
-## Quick Eqns
-Only taking into account the temporal offset, this can be conceptualized as: `SongAndSignal(t) = Signal(t) + A*Song(t+temporalOffset)`, thus, `Signal(t) = SignalAndSong(t) - A*Song(t+temporalOffset)`
-
-Taking into account (by sliding windows) that the attenuation is a function of both time and frequency: `Signal(t,f) = SignalAndSong(t,f) - *A(t,f)*\*Song(t+temporalOffset,f)`
+-  A normalization factor at each frequency is applied to the undesired waveform, to warp its spectrogram to that of the mixed signal.
+-  The aligned and scaled undesired signal is subtracted from the mixture (in the frequency domain)
+-  A waveform representation is obtained using Griffin and Lim's algorithm to recover an audio signal given only the magnitude of its Short-Time Fourier Transform (STFT), i.e. its spectrogram. The Griffin and Lim method is described in the paper: *Griffin D. and Lim J. (1984). "Signal Estimation from Modified Short-Time Fourier Transform". IEEE Transactions on Acoustics, Speech and Signal Processing. 32 (2): 236–243. doi:10.1109/TASSP.1984.1164317*
 
 ## Data
-The `SongTrue` file contains a recording of the song "Hey" from the BenSound.com royalty-free audio website.
 
-The `SongAndSignal` file contains a recording of me talking, while "Hey" plays in the background.
+**For unknown reasons, not all media players read these wave files correctly. When in doubt, use VLC**
+
+The `INPUT1_SongAndSignal.wav` file contains a recording of me talking, while "Hey" plays in the background.
+
+The `INPUT2_SongTrue.wav` file contains a recording of the song "Hey" from the BenSound.com royalty-free audio website.
+
+The `RESULT_retrieved_signal.wav` file is the output from the script, with the music removed.
 
 ## Preliminary results:
 
 The temporal offset between `SongTrue` and `SongAndSignal` is easily determined by checking lag correlation. The maximum in correlation shows the offset, and nearby local maxima show multiples of the beat.
 
-![temporal_offset.png](temporal_offset.png)
+![temporal_offset.png](images/temporal_offset.png)
 
 The below figures each show a visual representation the two files described above
 -  **Top:** The recording of my voice while Hey plays in the background (`SongAndSignal`).
@@ -49,32 +49,32 @@ The below figures each show a visual representation the two files described abov
 The amplitudes below are raw, **not** normalized yet. In this particular case, the music signal in the `SongAndSignal` is quieter than `SongTrue`, so the latter would need to be attenuated to match. The opposite case may be true in other situations, perhaps within the same audio file. There is no need to treat these as separate cases; whether to amplify or attenuate is reflected in whether A(t,f) is greater or less than unity.
 
 `TracksWaveform_marked.png` shows both files represented as waveform time series:
-![TracksWaveform](TracksWaveform_marked.png)
+![TracksWaveform](images/TracksWaveform_marked.png)
 
 `TracksSectral_marked.png` shows the spectral representation:
-![TracksSpectral](TracksSpectral_marked.png)
+![TracksSpectral](images/TracksSpectral_marked.png)
 
 The below figure shows the approach for calculating the attenuation factor. The spectrograms on the right show a 250 ms slice of the aligned recordings. The left side shows the frequency decomposition at the left edge (e.g. t=0) of the respective spectrograms.
 
-![slice_250_ms.png](slice_250_ms.png)
+![slice_250_ms.png](images/slice_250_ms.png)
 
 The mixed recording clearly contains an attenuated signal from the song in the 1 kHz - 5 kHz midrange frequencies. However, the strong bass frequencies (< 1kHz) in the undesired song true signal were not transferred into the recording (likely due to the low quality of the mic). Thus frequency windowing appears to be necessary as well.
 
 One way to handle this might be warping the song's spectrogram to better match the mixed signal's spectrogram at each frequency. The below figure shows the warping ratio at each frequency, attenuating the bass. The two odd spikes are due to frequencies favored by the cheap mic's static.
 
-![freq_attenuation_ratio_Hz.png](freq_attenuation_ratio_Hz.png)
+![freq_attenuation_ratio_Hz.png](images/freq_attenuation_ratio_Hz.png)
 
 The results of applying this correction factor are shown below, warping the undesired song to match the profile of the mixed recording. (top = raw, bottom = warped)
 
-![warp_image.png](warp_image.png)
+![warp_image.png](images/warp_image.png)
 
 This produces excellent matching in the 1 kHz - 5 kHz range that contains the desired signel we wish to extract. The temporal matching and frequency warping appear to cleanly align the two signals. 
 
-![Matched_time_amplitude_2.png](Matched_time_amplitude_2.png)
+![Matched_time_amplitude_2.png](images/Matched_time_amplitude_2.png)
 
 The aligned and warped spectrogram is effectively scaled for removal from the mixed signal. The figures below show the result of cleaning the song out of the recording of my introduction. 
 
-![CleanedResult.png](CleanedResult.png)
+![CleanedResult.png](images/CleanedResult.png)
 
 ## Misc Notes
 
