@@ -34,7 +34,7 @@ The `INPUT1_SongAndSignal.wav` file contains a recording of me talking, while "H
 
 The `INPUT2_SongTrue.wav` file contains a recording of the song "Hey" from the BenSound.com royalty-free audio website.
 
-The `RESULT_retrieved_signal.wav` file is the output from the script, with the music removed.
+The `RESULT_reconstructed_signal.wav` file is the output from the script, with the music removed.
 
 ## Preliminary results:
 
