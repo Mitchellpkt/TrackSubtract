@@ -30,6 +30,8 @@ A user submits an audiofile labeled `SongAndSignal` that contains both the desir
 
 **For unknown reasons, not all media players read these wave files correctly. When in doubt, use VLC**
 
+Files can be downloaded from https://drive.google.com/open?id=1yS5iUMgySuetPGSY6Q0zEJGVJNArE2So 
+
 The `INPUT1_SongAndSignal.wav` file contains a recording of me talking, while "Hey" plays in the background.
 
 The `INPUT2_SongTrue.wav` file contains a recording of the song "Hey" from the BenSound.com royalty-free audio website.
